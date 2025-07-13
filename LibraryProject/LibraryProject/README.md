@@ -1,5 +1,5 @@
-Objectives
-Set Up Django Development Environment:
+# Objectives
+## Set Up Django Development Environment:
 
 Install Django and create a new Django project.
 Familiarize yourself with the project’s default structure and run the development server.
