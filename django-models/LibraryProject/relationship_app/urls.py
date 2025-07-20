@@ -15,7 +15,7 @@ urlpatterns = [
     path('admin-panel/', admin_view, name='admin_view'),
     path('librarian-panel/', librarian_view, name='librarian_view'),
     path('member-panel/', member_view, name='member_view'),
-        path('books/add/', add_book, name='add_book'),
+    path('books/add/', add_book, name='add_book'),
     path('books/<int:pk>/edit/', edit_book, name='edit_book'),
     path('books/<int:pk>/delete/', delete_book, name='delete_book')
     
