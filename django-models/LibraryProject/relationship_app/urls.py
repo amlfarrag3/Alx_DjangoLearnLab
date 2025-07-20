@@ -1,4 +1,5 @@
 from django.urls import path
+from . import views
 from .views import list_books, LibraryDetailView
 from django.contrib.auth.views import LoginView, LogoutView
 from .views import register_view, list_books, LibraryDetailView
@@ -17,6 +18,7 @@ urlpatterns = [
     path('member-panel/', member_view, name='member_view'),
     path('books/add_book/', add_book, name='add_book'),
     path('books/<int:pk>/edit_book/', edit_book, name='edit_book'),
-    path('books/<int:pk>/delete/', delete_book, name='delete_book')
+    path('books/<int:pk>/delete/', delete_book, name='delete_book'),
+    path('register/', views.register, name='register'), 
     
 ]
