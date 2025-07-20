@@ -28,3 +28,17 @@ try:
     print(f"\nLibrarian of {library.name}: {librarian.name}")
 except Librarian.DoesNotExist:
     print(f"No librarian assigned to {library.name}")
+# Get a specific author (example: "J.K. Rowling")
+    author_name = "J.K. Rowling"
+try:
+    author = Author.objects.get(name=author_name)
+
+    
+    books_by_author = Book.objects.filter(author=author)
+
+    print(f"Books by {author.name}:")
+    for book in books_by_author:
+        print(f"- {book.title}")
+
+except Author.DoesNotExist:
+    print(f"No author found with name '{author_name}'.")
