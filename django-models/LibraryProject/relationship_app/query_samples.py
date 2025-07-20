@@ -35,7 +35,21 @@ try:
 
     
     books_by_author = Book.objects.filter(author=author)
+library_name = "Central Library"
 
+try:
+    library = Library.objects.get(name=library_name)
+
+   
+    librarian = Librarian.objects.get(library=library)
+
+    print(f"Librarian for {library.name}: {librarian.name}")
+
+except Library.DoesNotExist:
+    print(f"No library found with name '{library_name}'.")
+
+except Librarian.DoesNotExist:
+    print(f"No librarian assigned to {library.name}.")
     print(f"Books by {author.name}:")
     for book in books_by_author:
         print(f"- {book.title}")
