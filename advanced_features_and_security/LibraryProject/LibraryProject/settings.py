@@ -158,3 +158,26 @@ CSP_SCRIPT_SRC = ("'self'",)
 CSP_STYLE_SRC = ("'self'", 'https://fonts.googleapis.com')
 CSP_FONT_SRC = ("'self'", 'https://fonts.gstatic.com')
 CSP_IMG_SRC = ("'self'", 'data:')
+# SECURITY: Force HTTPS redirects
+SECURE_SSL_REDIRECT = True  # Redirect all HTTP requests to HTTPS
+
+# SECURITY: HTTP Strict Transport Security (HSTS)
+SECURE_HSTS_SECONDS = 31536000  # One year
+SECURE_HSTS_INCLUDE_SUBDOMAINS = True
+SECURE_HSTS_PRELOAD = True
+
+# SECURITY: Secure cookies
+SESSION_COOKIE_SECURE = True
+CSRF_COOKIE_SECURE = True
+
+# SECURITY: Additional secure headers
+X_FRAME_OPTIONS = "DENY"  # Prevent clickjacking
+SECURE_CONTENT_TYPE_NOSNIFF = True  # Prevent MIME type sniffing
+SECURE_BROWSER_XSS_FILTER = True  # Enable browser XSS filter
+
+# SECURITY: Disable debug mode in production
+DEBUG = False  # WARNING: Never use True in production
+
+# Set ALLOWED_HOSTS properly
+MIDDLEWARE.insert(0, 'bookshelf.middleware.SecurityHeadersMiddleware')
+
