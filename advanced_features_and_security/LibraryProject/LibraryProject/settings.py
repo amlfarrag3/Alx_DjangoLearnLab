@@ -180,4 +180,4 @@ DEBUG = False  # WARNING: Never use True in production
 
 # Set ALLOWED_HOSTS properly
 MIDDLEWARE.insert(0, 'bookshelf.middleware.SecurityHeadersMiddleware')
-
+SECURE_PROXY_SSL_HEADER = ('HTTP_X_FORWARDED_PROTO', 'https')
