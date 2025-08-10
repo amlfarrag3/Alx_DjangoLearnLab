@@ -1,13 +1,9 @@
-# api/serializers.py
 from rest_framework import serializers
 from datetime import datetime
 from .models import Author, Book
 
 class BookSerializer(serializers.ModelSerializer):
-    """
-    Serializes Book model fields.
-    Custom validation ensures publication_year is not in the future.
-    """
+
     class Meta:
         model = Book
         fields = ['id', 'title', 'publication_year', 'author']
@@ -25,26 +21,15 @@ class BookSerializer(serializers.ModelSerializer):
 
 
 class BookNestedSerializer(serializers.ModelSerializer):
-    """
-    A lightweight nested serializer for Book to use inside AuthorSerializer.
-    We omit the 'author' field here to avoid circular nesting.
-    """
+
     class Meta:
         model = Book
         fields = ['id', 'title', 'publication_year']
 
 
 class AuthorSerializer(serializers.ModelSerializer):
-    """
-    Serializes an Author and their related books:
-    - name: main author field
-    - books: a nested list of BookNestedSerializer instances representing all
-      books related to this author (using the `related_name='books'` from the model).
-    """
-    # Use source='books' because Author model related_name is 'books'
-    books = BookNestedSerializer(source='books', many=True, read_only=True)
+    books = BookSerializer(many=True, read_only=True)
 
     class Meta:
         model = Author
         fields = ['id', 'name', 'books']
-        read_only_fields = ['id', 'books']
