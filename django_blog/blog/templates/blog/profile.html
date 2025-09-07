@@ -1,0 +1,13 @@
+{% extends 'blog/base.html' %} {%block title %} profile {% endblock %}
+
+{%load static %} 
+
+{% block content%}
+<form method = 'post'>
+    {% csrf_token %}
+    {{form}}
+    <button>submit</button>
+</form>
+<a href = "{% url 'home' %}"> Go Back </a>
+
+{%endblock%}

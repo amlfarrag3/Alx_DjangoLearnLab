@@ -1,0 +1,13 @@
+{% extends 'blog/base.html'%} {% block title%} Update blog {% endblock %}
+
+{%load static %}
+
+{% block content %}
+<h1>confirm delete blog </h1>
+<P> are you sure delete {{post.title}}</p>
+<form method='post'>
+    {% csrf_token %}
+    <button type = "submit">delete</button>
+    <a href="{% url 'blog' %}" >Cancel</a>
+    </form>
+{% endblock %}

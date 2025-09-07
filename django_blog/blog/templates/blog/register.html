@@ -1,0 +1,13 @@
+{% extends 'blog/base.html' %} {%block title %} register {% endblock %}
+
+{% comment %} {%load static %}  {% endcomment %}
+
+{%block content%}
+<form method = 'post'>
+    {% csrf_token %}
+    {{form}}
+    <button>Submit</button>
+</form>
+<a href = "{% url 'login' %}"> Already have an account ?  </a>
+
+{% endblock %}

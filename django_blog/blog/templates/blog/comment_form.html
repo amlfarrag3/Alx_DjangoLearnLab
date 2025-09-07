@@ -1,0 +1,11 @@
+{% extends 'blog/base.html'%} {%block title%} comments {% endblock %}
+
+{%load static %}
+{%block content %}
+<h1> {{post.title}} </h1>
+<form method = 'post'>
+    {%csrf_token%}
+    {{ form }}
+    <button> comment </button>
+</form>
+{%endblock%}
